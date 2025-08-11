@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $stmt ->bindParam(':email',$email);
     $stmt ->bindParam(':senha',$senha);
     $stmt ->bindParam(':id_perfil',$id_perfil);
-
+   
     if($stmt->execute()){
         echo "<script>alert('Usuário cadastradi com sucesso!');</script>";
     }else{
