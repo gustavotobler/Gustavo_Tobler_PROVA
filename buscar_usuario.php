@@ -8,7 +8,7 @@ if($_SESSION['perfil'] !=1 && $_SESSION['perfil']!=2){
     exit();
 }
 
-$usuario = []; //INICIALIZA A VARIÁVEL PARA EVITAR ERROS
+$usuarios = []; //INICIALIZA A VARIÁVEL PARA EVITAR ERROS
 
 //SE O FORMULÁRIO FOR ENVIADO, BUSCA O USUÁRIO POR ID OU NOME
 if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['buscar'])){
@@ -19,18 +19,52 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['buscar'])){
         $sql="SELECT * FROM usuario WHERE id_usuario = :busca ORDER BY nome ASC";
         $stmt=$pdo->prepare($sql);
         $stmt->bindParam(':busca',$busca, PDO::PARAM_INT);
-    }
-    if(is_numeric($busca)){
+    }else{
+   
         $sql="SELECT * FROM usuario WHERE nome LIKE :busca_nome ORDER BY nome ASC";
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':busca_nome',"%$busca%",PDO::PARAM_STR);
     }
     }else{
         $sql = "SELECT * FROM usuario order by nome ASC";
-        $usuarios = $stmt->fetchALL(PDO::FETCH_ASSOC);
+       $stmt = $pdo->prepare($sql);
 
-
-
-}
-
+    }
+    $stmt->execute();
+    $usuarios = $stmt->fetchALL(PDO::FETCH_ASSOC);
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Lista de Usuários</h2>
+    <form action="buscar_usuario" method="POST">
+        <label for="busca">Digite o ID ou NOME(opcional): </label>
+        <input type="text" id="busca" name="busca">
+    </form>
+    <?php if(!empty($usuarios)): ?>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Perfil</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach($usuarios as $usuario): ?>
+                <tr>
+                <td><?=htmlspecialchars($usuario['id_usuario'])?></td>
+                <td><?=htmlspecialchars($usuario['nome'])?></td>
+                <td><?=htmlspecialchars($usuario['email'])?></td>
+                <td><?=htmlspecialchars($usuario['id_perfil'])?></td>
+
+            </tr>
+        </table>
+    
+</body>
+</html>
