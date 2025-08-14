@@ -11,7 +11,7 @@ if($_SESSION['perfil'] !=1 && $_SESSION['perfil']!=2){
 $usuarios = []; //INICIALIZA A VARIÁVEL PARA EVITAR ERROS
 
 //SE O FORMULÁRIO FOR ENVIADO, BUSCA O USUÁRIO POR ID OU NOME
-if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['buscar'])){
+if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     $busca = trim($_POST['busca']);
     
     //VERIFICA SE A BUSCA É UM número OU nome
@@ -20,10 +20,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['buscar'])){
         $stmt=$pdo->prepare($sql);
         $stmt->bindParam(':busca',$busca, PDO::PARAM_INT);
     }else{
-   
         $sql="SELECT * FROM usuario WHERE nome LIKE :busca_nome ORDER BY nome ASC";
         $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(':busca_nome',"%$busca%",PDO::PARAM_STR);
+        $stmt->bindValue(':busca_nome',"$busca%",PDO::PARAM_STR);
     }
     }else{
         $sql = "SELECT * FROM usuario order by nome ASC";
@@ -38,17 +37,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['buscar'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
     <h2>Lista de Usuários</h2>
-    <form action="buscar_usuario" method="POST">
+    <form action="buscar_usuario.php" method="POST">
         <label for="busca">Digite o ID ou NOME(opcional): </label>
         <input type="text" id="busca" name="busca">
+
+        <button type="submit">Pesquisar</button>
     </form>
     <?php if(!empty($usuarios)): ?>
-        <table>
+        <table border="1">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
@@ -62,9 +63,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['buscar'])){
                 <td><?=htmlspecialchars($usuario['nome'])?></td>
                 <td><?=htmlspecialchars($usuario['email'])?></td>
                 <td><?=htmlspecialchars($usuario['id_perfil'])?></td>
+                <td>
+                    <a href="alterar_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>">Alterar</a>
 
+                    <a href="excluir_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>"onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir</a>
+                </td>
             </tr>
+        <?php endforeach;?>
         </table>
-    
+        <?php else:?>
+            <p>Nenhum usuário encontrado.</p>
+        <?php endif;?>
+
+        <a href="principal.php">Voltar</a>   
 </body>
 </html>
