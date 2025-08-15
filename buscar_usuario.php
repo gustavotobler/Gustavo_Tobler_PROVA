@@ -39,6 +39,37 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
     <link rel="stylesheet" href="styles.css"/>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+        border-radius: 3px;
+    }
+    th, td {
+        border: 1px solid #333;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    th {
+        background-color:rgb(3, 128, 245);
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+        img{
+            max-width:45px;
+        }
+   
+</style>
+
+  
 </head>
 <body>
     <h2>Lista de Usuários</h2>
@@ -49,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
         <button type="submit">Pesquisar</button>
     </form>
     <?php if(!empty($usuarios)): ?>
-        <table border="1">
+        <table border="1" align="center">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
@@ -74,7 +105,15 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
         <?php else:?>
             <p>Nenhum usuário encontrado.</p>
         <?php endif;?>
-
-        <a href="principal.php">Voltar</a>   
+            <br>
+        <a href="principal.php">
+    <img src="img/voltar.png">
+    </a>
+    <br>
+    <center>
+        <adress>
+            Gustavo Tobler - Técnico de desenvolvimento de sistemas
+        </adress>
+    </center>
 </body>
 </html>

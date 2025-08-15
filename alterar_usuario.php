@@ -43,6 +43,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <link rel="stylesheet" href="styles.css"/>
     <!--CERTIFIQUE-SE DE QUE O JAVASCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE-->
     <script src="scripts.js"></script>
+    <style>
+        img{
+            max-width:45px;
+        }
+    </style>
 </head>
 <body>
     <h2>Alterar Usuário</h2>
@@ -84,7 +89,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <button type="reset">Cancelar</button>
         </form>
     <?php endif;?>
-    <a href="principal.php">Voltar</a>
+    <br>
+    <a href="principal.php">
+    <img src="img/voltar.png">
+    </a>
     </form>
+    <br>
+    <center>
+        <adress>
+            Gustavo Tobler - Técnico de desenvolvimento de sistemas
+        </adress>
+    </center>
 </body>
 </html>

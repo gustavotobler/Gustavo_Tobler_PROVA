@@ -36,6 +36,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Cadastrar usuário</title>
+    <style>
+        img{
+            max-width:45px;
+        }
+    </style>
 </head>
 <body>
     <h2>Cadastrar Usuário</h2>
@@ -50,17 +55,24 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <input type="password" id="nome" name="nome" required>
         
         <label for="id_perfil">Perfil: </label>
-        <select id="id_perfil" name="id_perfil"></select>
+        <select id="id_perfil" name="id_perfil">
             <option value="1">Administrador</option>
             <option value="2">Secretaria</option>
             <option value="3">Almoxarife</option>
             <option value="4">Cliente</option>
-
+            </select>
         <button type="submit">Salvar</button>
         <button type="reset">Cancelar</button>
     </form>
-
-    <a href="principal.php">Voltar</a>
-    
+        <br>
+    <a href="principal.php">
+    <img src="img/voltar.png">
+    </a>
+    <br>
+    <center>
+        <adress>
+            Gustavo Tobler - Técnico de desenvolvimento de sistemas
+        </adress>
+    </center>
 </body>
 </html>

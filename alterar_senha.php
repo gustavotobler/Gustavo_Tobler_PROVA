@@ -71,5 +71,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         senha2.type = tipo;
     }
 </script>
+<center>
+    <adress>
+        Gustavo Tobler - Técnico em desenvolvimento de sistemas
+    </adress>
+</center>
 </body>
 </html>

@@ -144,5 +144,11 @@ $opcoes_menu = $permissoes[$id_perfil];
             <?php endforeach; ?>
             </ul>
     </nav>
+    <br>
+    <center>
+        <adress>
+            Gustavo Tobler - Técnico de desenvolvimento de sistemas
+        </adress>
+    </center>
 </body>
 </html>

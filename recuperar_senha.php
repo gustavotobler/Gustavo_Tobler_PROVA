@@ -49,5 +49,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         <button type="submit">Enviar a senha temporária</button>
     </form>
+    <br>
+    <center>
+        <adress>
+            Gustavo Tobler - Técnico de desenvolvimento de sistemas
+        </adress>
+    </center>
 </body>
 </html>
