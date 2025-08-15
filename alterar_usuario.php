@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         }else{
             $sql = "SELECT * FROM usuario WHERE nome LIKE :busca_nome";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':busca_nome',"%busca%",PDO::PARAM_STR);
+            $stmt->bindValue(':busca_nome',"%$busca%",PDO::PARAM_STR);
         }
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <div id="sugestoes"></div>
     <button type="submit">Pesquisar</button>
 
-
+    </form>
     <?php if($usuario): ?>
         <!--FORMULÁRIO PARA ALTERAR USUÁRIO-->
         <form action="processa_alteracao_usuario.php" method="POST">
@@ -70,13 +70,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <label for="id_perfil">Perfil: </label>
             <select id="id_perfil" name="id_perfil">
                 <option value="1"<?=$usuario['id_perfil']== 1?'select':''?>>Admnistrador</option>
-                <option value="2"<?=$usuario['id_perfil']== 2?'select':''?>>Almoxarife</option>
-                <option value="3"<?=$usuario['id_perfil']== 3?'select':''?>>Cliente</option>
-                <option value="4"<?=$usuario['id_perfil']== 4?'select':''?>>Admnistrador</option>
-                
+                <option value="2"<?=$usuario['id_perfil']== 2?'select':''?>>Secretaria</option>
+                <option value="3"<?=$usuario['id_perfil']== 3?'select':''?>>Almoxarife</option>
+                <option value="4"<?=$usuario['id_perfil']== 4?'select':''?>>Cliente</option>
             </select>
+            <!--SE O USUARIO LOGADO FOR UM ADM, EXIBIR OPCAO DE ALTERAR SENHA-->
+            <?php if($_SESSION['perfil']==1): ?>
+                <label for="nova_senha">Nova Senha:</label>
+                <input type="password" id="nova_senha" name="nova_senha">
+            <?php endif;?>
+
+                <button type="submit">Alterar</button>
+                <button type="reset">Cancelar</button>
         </form>
+    <?php endif;?>
+    <a href="principal.php">Voltar</a>
     </form>
-    
 </body>
 </html>
