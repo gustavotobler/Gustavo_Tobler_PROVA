@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     //ATUALIZA OS DADOS DO USUARIO
     if($nova_senha){
         $sql = "UPDATE usuario SET nome=:nome,email=:email,id_perfil=:id_perfil,senha=:senha WHERE id_usuario =:id";
-        $stmt = $PDO->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':senha',$nova_senha,PDO::PARAM_INT);
     }else{
         $sql = "UPDATE usuario SET nome=:nome, email=:email, id_perfil=:id_perfil WHERE id_usuario = :id";

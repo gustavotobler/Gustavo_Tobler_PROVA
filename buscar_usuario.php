@@ -39,6 +39,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
     <link rel="stylesheet" href="styles.css"/>
+    
     <style>
     table {
         border-collapse: collapse;

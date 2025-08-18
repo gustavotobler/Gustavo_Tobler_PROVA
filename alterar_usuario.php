@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'conexao.php';
+require_once 'principal.php';
 
 //VERIFICA SE O USUÁRIO TEM PERMISSÃO DE ADM
 if($_SESSION['perfil'] !=1){
@@ -42,7 +43,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <title>Alterar Usuário</title>
     <link rel="stylesheet" href="styles.css"/>
     <!--CERTIFIQUE-SE DE QUE O JAVASCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE-->
-    <script src="scripts.js"></script>
     <style>
         img{
             max-width:45px;
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     </form>
     <?php if($usuario): ?>
         <!--FORMULÁRIO PARA ALTERAR USUÁRIO-->
-        <form action="processa_alteracao_usuario.php" method="POST">
+        <form action="processa_alteracao_usuario.php" method="POST" onsubmit="return validarAlteracao()">
             <input type="hidden" name="id_usuario" value="<?=htmlspecialchars($usuario['id_usuario'])?>">
 
             <label for="nome">Nome: </label>
@@ -95,6 +95,34 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     </a>
     </form>
     <br>
+<script>
+function validarAlteracao() {
+    const nome = document.getElementById('nome').value.trim();
+    const senhaInput = document.getElementById('nova_senha');
+    const senha = senhaInput ? senhaInput.value.trim() : '';
+
+    const nomeRegex = /^[A-Za-zÁ-ÉÍ-ÓÚá-éí-óúÂ-Ûâ-ûÃ-Õã-õÇç\s]+$/;
+
+    if (nome.length < 3) {
+        alert('O nome deve ter pelo menos 3 caracteres.');
+        return false;
+    }
+
+    if (!nomeRegex.test(nome)) {
+        alert('Nome inválido! Use apenas letras e espaços.');
+        return false;
+    }
+
+    if (senha !== '' && senha.length < 6) {
+        alert('A nova senha deve ter pelo menos 6 caracteres.');
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+
     <center>
         <adress>
             Gustavo Tobler - Técnico de desenvolvimento de sistemas

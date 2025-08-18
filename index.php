@@ -41,10 +41,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css"/>
+
 </head>
 <body>
     <h2>Login</h2>
-    <form action="index.php" method="POST">
+    <form action="index.php" method="POST" onsubmit="return validarLogin()">
         <label for="email">E-mail:</label> 
         <input type="email" id="email" name="email" required> 
 
@@ -56,6 +57,21 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
     <p><a href="recuperar_senha.php">Esqueci a minha senha</a></p>
     <br>
+    <script>
+function validarLogin() {
+   
+    const senha = document.getElementById('senha').value.trim();
+    
+
+    if (senha.length < 6) {
+        alert("A senha deve ter pelo menos 6 caracteres.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
     <center>
         <adress>
             Gustavo Tobler - Técnico de desenvolvimento de sistemas

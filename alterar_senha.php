@@ -44,12 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar senha</title>
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 <h2>Alterar Senha</h2>
 <p>Olá, <strong><?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario'] : 'Usuário'; ?></strong>. Digite sua nova senha abaixo:</p>
 
-<form action="alterar_senha.php" method="POST">
+<form action="alterar_senha.php" method="POST" onsubmit="return validar()">
     <label for="nova_senha">Nova senha</label>
     <input type="password" id="nova_senha" name="nova_senha" required>
 
@@ -62,15 +63,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <button type="submit">Salvar nova senha</button>
 </form>
+
 <script>
-    function mostrarSenha() {
-        var senha1 = document.getElementById("nova_senha");
-        var senha2 = document.getElementById("confirmar_senha");
-        var tipo = senha1.type === "password" ? "text" : "password";
-        senha1.type = tipo;
-        senha2.type = tipo;
+   function validar() {
+    const novaSenha = document.getElementById('nova_senha').value.trim();
+    const confirmarSenha = document.getElementById('confirmar_senha').value.trim();
+
+    if (novaSenha.length < 6) {
+        alert('A senha deve ter pelo menos 6 caracteres!');
+        return false;
     }
+
+    if (novaSenha !== confirmarSenha) {
+        alert('As senhas não coincidem!');
+        return false;
+    }
+
+    if (novaSenha === 'tem123') {
+        alert('Escolha uma senha diferente da senha temporária!');
+        return false;
+    }
+
+    return true;
+}
+
+function mostrarSenha() {
+    var senha1 = document.getElementById("nova_senha");
+    var senha2 = document.getElementById("confirmar_senha");
+    var tipo = senha1.type === "password" ? "text" : "password";
+    senha1.type = tipo;
+    senha2.type = tipo;
+}
 </script>
+
 <center>
     <adress>
         Gustavo Tobler - Técnico em desenvolvimento de sistemas
