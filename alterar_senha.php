@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('conexao.php');
+require 'menu_nav.php';
 
 // GARANTE QUE O USUÁRIO ESTEJA LOGADO
 if (!isset($_SESSION['id_usuario'])) {

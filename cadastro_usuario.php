@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'conexao.php';
+require 'menu_nav.php';
 
 // Verifica se o usuário tem permissão supondo que o perfil 1 sejá o admin
 if($_SESSION['perfil'] != 1){
@@ -37,6 +38,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css"/>
     <title>Cadastrar usuário</title>
+    <style>
+          img{
+            max-width:45px;
+        }
+    </style>
 </head>
 <body>
      
@@ -63,7 +69,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <button type="submit">Salvar</button>
         <button type="reset">Cancelar</button>
      </form>
-     <a href="principal.php">Voltar</a>
+     
+     <a href="principal.php"><img src="img/voltar.png"></a>
      <script>
 function validar() {
   const nome = document.getElementById('nome').value.trim();
@@ -83,6 +90,10 @@ function validar() {
   return true; // tudo ok, envia form
 }
 </script>
-
+<center>
+        <adress>
+            Gustavo Tobler - Técnico de desenvolvimento de sistemas
+        </adress>
+    </center>
 </body>
 </html>

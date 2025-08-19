@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once 'conexao.php';
-require_once 'principal.php';
-
+require 'menu_nav.php';
 //VERIFICA SE O USUÁRIO TEM PERMISSÃO DE ADM
 if($_SESSION['perfil'] !=1){
     echo "<script>alert('Acesso Negado!');window.location.href='principal.php';</script>";

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once 'conexao.php';
+require 'menu_nav.php';
 
 //VERIFICA SE O USUARIO TEM PERMISSAO DE ADM
 If($_SESSION['perfil']!=1){
@@ -66,7 +67,7 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
     }
         img{
             max-width:45px;
-            margin-left:580px;
+            margin-left:-20px;
         }
 </style>
 </head>

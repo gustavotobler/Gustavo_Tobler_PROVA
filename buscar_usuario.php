@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once 'conexao.php';
+require 'menu_nav.php';
 
 //VERIFICA SE O USUÁRIO TEM PERMISSÃO DE adm OU secretária
 if($_SESSION['perfil'] !=1 && $_SESSION['perfil']!=2){

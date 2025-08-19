@@ -2,6 +2,7 @@
 session_start();
 require_once 'conexao.php';
 require_once 'funcoes_email.php'; //ARQUIVOS COM FUNÇÕES QUE GERAM A SENHA E SIMULAM O ENVIO
+require 'menu_nav.php';
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $email=$_POST['email'];
