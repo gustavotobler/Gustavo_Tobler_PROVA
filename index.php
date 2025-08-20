@@ -63,8 +63,8 @@ function validarLogin() {
     const senha = document.getElementById('senha').value.trim();
     
 
-    if (senha.length < 6) {
-        alert("A senha deve ter pelo menos 6 caracteres.");
+    if (senha.length < 8) {
+        alert("A senha deve ter pelo menos 8 caracteres.");
         return false;
     }
 

@@ -70,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     const novaSenha = document.getElementById('nova_senha').value.trim();
     const confirmarSenha = document.getElementById('confirmar_senha').value.trim();
 
-    if (novaSenha.length < 6) {
-        alert('A senha deve ter pelo menos 6 caracteres!');
+    if (novaSenha.length < 8) {
+        alert('A senha deve ter pelo menos 8 caracteres!');
         return false;
     }
 
