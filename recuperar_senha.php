@@ -2,7 +2,6 @@
 session_start();
 require_once 'conexao.php';
 require_once 'funcoes_email.php'; //ARQUIVOS COM FUNÇÕES QUE GERAM A SENHA E SIMULAM O ENVIO
-require 'menu_nav.php';
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $email=$_POST['email'];
@@ -42,6 +41,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <title>Recuperar senha</title>
     <link rel="stylesheet" href="styles.css"/>
     <script src="validacoes.js"></script>
+    <style>
+
+        button{
+            max-width:200px;
+        }
+        </style>
 </head>
 <body>
     <h2>Recuperar senha</h2>
@@ -52,6 +57,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <button type="submit">Enviar a senha temporária</button>
     </form>
     <br>
+    <a href="index.php"><button>Voltar</button>
     <center>
         <adress>
             Gustavo Tobler - Técnico de desenvolvimento de sistemas
