@@ -1,5 +1,9 @@
 <?php
 $id_perfil = $_SESSION['perfil'];
+$sqlPerfil = 'SELECT nome_perfil FROM perfil WHERE id_perfil = :id_perfil';
+$stmtPerfil = $pdo->prepare($sqlPerfil);
+$stmtPerfil->bindParam(':id_perfil', $id_perfil, PDO::PARAM_INT);
+$stmtPerfil->execute();
 
 // DEFINIÇÃO DAS PERMISSÕES POR PERFIL
 $permissoes = [
