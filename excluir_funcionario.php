@@ -23,7 +23,7 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
     $id_funcionario = $_GET['id'];
 
     //EXCLUI O USUARIO DO BANCO DE DADOS
-    $sql = "DELETE FROM funcionario WHERE id_funcionario=:id";
+    $sql = "DELETE FROM funcionario WHERE id_funcionario=:id";//Variável $sql que guarda um DELETE. Este comando serve para deletar informações do banco de dados, aqui no caso, será o funcionário desejado.
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id',$id_funcionario,PDO::PARAM_INT);
 
@@ -85,6 +85,7 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
                 <th>Email</th>  
                 <th>Ações</th> 
             </tr>
+    <!--Está parte do código fará com que todos os funcionários que foram cadastrados no banco com seus devidos nomes de campo(name), apareçam numa lista -->
         <?php foreach($funcionarios as $funcionario): ?>
             <tr>
                 <td><?=htmlspecialchars($funcionario['id_funcionario'])?></td>

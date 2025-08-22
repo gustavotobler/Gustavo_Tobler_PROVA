@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email_func = $_POST['email'];  
 
     $sql = "INSERT INTO funcionario(nome_funcionario,endereco,telefone,email)
-            VALUES (:nome_funcionario,:endereco,:telefone,:email)";
+            VALUES (:nome_funcionario,:endereco,:telefone,:email)";//Está variável $sql está guardando um INSERT. Este INSERT é uma das partes que fará com que os dados sejam inseridos no banco
     $stmt = $pdo -> prepare($sql);
     $stmt -> bindParam(":nome_funcionario",$nome_func);
     $stmt -> bindParam(":endereco",$endereco);
@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
      
      <h2>Cadastrar funcionário</h2>
-
+    <!--Este formulário será utilizado para inserir os dados de cadastro, que posteriormente serão direcionados ao banco "senai_login"-->
      <form action="cadastro_funcionario.php" method="POST" onsubmit="return validar()">
         <label for="nome">Nome: </label>
         <input type="text" id="nome" name="nome_funcionario" required placeholder="Nome Sobrenome"/>
@@ -66,6 +66,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      </form>
      
      <a href="principal.php"><img src="img/voltar.png"></a>
+
+    <!--Código Java Script que fará com que campos como telefone e nome sejam validados devidamente-->
      <script>
           const tel = document.getElementById("telefone");
           tel.oninput = e => {

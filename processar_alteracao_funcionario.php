@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $endereco = $_POST['endereco'];
     $telefone = $_POST['telefone'];
     $email_func = $_POST['email'];
-    //ATUALIZA OS DADOS DO USUARIO
+    //ATUALIZA OS DADOS DO FUNCIONÁRIO ATRÁVES DO COMANDO UPDATE, QUE ALTERA CAMPOS ESPECÍFICOS OS QUAIS O USUÁRIO QUE ESTÁ EXECUTANDO A AÇÃO DESEJA.
     $sql = "UPDATE funcionario SET nome_funcionario=:nome_funcionario,endereco=:endereco,telefone=:telefone,email=:email WHERE id_funcionario =:id";
     $stmt = $pdo->prepare($sql);
   

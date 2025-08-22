@@ -41,7 +41,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Funcionário</title>
     <link rel="stylesheet" href="styles.css"/>
-    <!--CERTIFIQUE-SE DE QUE O JAVASCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE-->
     <style>
         img{
             max-width:45px;
@@ -53,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     <form action="alterar_funcionario.php" method="POST">
         <label for="busca_funcionario">Digite o ID ou o nome do funcionário: </label>
-        <input type="text" id="buscar_funcionario" name="busca_funcionario" required onkeyup="buscarSugestoes()">
+        <input type="text" id="buscar_funcionario" name="busca_funcionario" required onkeyup="buscarSugestoes()"><!--Campo de busca onde será digitado o ID ou nome do Funcionário-->
 
     <!--DIV PARA EXIBIR SUGESTÕES DE FUNCIONÁRIOS-->
     <div id="sugestoes"></div>
@@ -97,16 +96,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         .replace(/(\d{4,5})(\d{4}).*/,"$1-$2");
 };
 function validarAlteracao() {
-    const nome_funcionario = document.getElementById('nome_funcionario').value.trim();
+    const nome = document.getElementById('nome').value.trim();
 
-    const nome_funcionarioRegex = /^[A-Za-zÁ-ÉÍ-ÓÚá-éí-óúÂ-Ûâ-ûÃ-Õã-õÇç\s]+$/;
+    const nomeRegex = /^[A-Za-zÁ-ÉÍ-ÓÚá-éí-óúÂ-Ûâ-ûÃ-Õã-õÇç\s]+$/;
 
-    if (nome_funcionario.length < 3) {
+    if (nome.length < 3) {
         alert('O nome deve ter pelo menos 3 caracteres.');
         return false;
     }
 
-    if (!nome_funcionarioRegex.test(nome_funcionario)) {
+    if (!nomeRegex.test(nome)) {
         alert('Nome inválido! Use apenas letras e espaços.');
         return false;
     }
