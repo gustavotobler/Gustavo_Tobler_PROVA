@@ -17,11 +17,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     
     //VERIFICA SE A BUSCA É UM número OU nome
     if(is_numeric($busca)){
-        $sql="SELECT * FROM funcionario WHERE id_funcionario = :busca ORDER BY nome_funcionario ASC";
+        $sql="SELECT * FROM funcionario WHERE id_funcionario = :busca ORDER BY nome_funcionario ASC";//Busca por o funcionário por ID
         $stmt=$pdo->prepare($sql);
         $stmt->bindParam(':busca',$busca, PDO::PARAM_INT);
     }else{
-        $sql="SELECT * FROM funcionario WHERE nome_funcionario LIKE :busca_nome ORDER BY nome_funcionario ASC";
+        $sql="SELECT * FROM funcionario WHERE nome_funcionario LIKE :busca_nome ORDER BY nome_funcionario ASC";//Busca o funcionário por nome
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':busca_nome',"$busca%",PDO::PARAM_STR);
     }
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     <h2>Lista de Funcionários</h2>
     <form action="buscar_funcionario.php" method="POST">
         <label for="busca">Digite o ID ou NOME(opcional): </label>
-        <input type="text" id="busca" name="busca" required>
+        <input type="text" id="busca" name="busca" required><!--Campo onde o usuário irá buscar o funcionário, digitando por ID ou pelo próprio nome.-->
 
         <button type="submit">Pesquisar</button>
     </form>
