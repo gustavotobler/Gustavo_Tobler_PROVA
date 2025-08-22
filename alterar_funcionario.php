@@ -77,8 +77,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <input type="email" name="email" id="email" value="<?=htmlspecialchars($funcionario['email'])?>" required placeholder="user@gmail.com">       
     
             
-                <button type="submit">Alterar</button>
-                <button type="reset">Cancelar</button>
+                <button type="submit" style="background-color:#39FF1F;">Alterar</button>
+                <button type="reset" style="background-color:#FF311F;">Cancelar</button>
         </form>
     <?php endif;?>
     <br>

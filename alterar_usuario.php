@@ -84,8 +84,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <input type="password" id="nova_senha" name="nova_senha">
             <?php endif;?>
 
-                <button type="submit">Alterar</button>
-                <button type="reset">Cancelar</button>
+                <button type="submit" style="background-color:#39FF1F;">Alterar</button>
+                <button type="reset"  style="background-color:#FF311F;">Cancelar</button>
         </form>
     <?php endif;?>
     <br>

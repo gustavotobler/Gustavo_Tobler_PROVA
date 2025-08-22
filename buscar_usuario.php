@@ -97,9 +97,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
                 <td><?=htmlspecialchars($usuario['email'])?></td>
                 <td><?=htmlspecialchars($usuario['id_perfil'])?></td>
                 <td>
-                    <a href="alterar_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>"><button>Alterar</button></a>
+                    <a href="alterar_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>"><button style="background-color:#39FF1F;">Alterar</button></a>
 
-                    <a href="excluir_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>"onclick="return confirm('Tem certeza que deseja excluir este usuário?')"><button>Excluir</button></buttonExcluir></a>
+                    <a href="excluir_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>"onclick="return confirm('Tem certeza que deseja excluir este usuário?')"><button  style="background-color:#FF311F;">Excluir</button></a>
                 </td>
             </tr>
         <?php endforeach;?>

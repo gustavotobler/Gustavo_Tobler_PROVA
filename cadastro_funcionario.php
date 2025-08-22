@@ -28,7 +28,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<script>alert('Erro ao cadastrar funcionário');</script>";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <label for="email">E-mail: </label>
         <input type="email" id="email" name="email" required placeholder="user@gmail.com"/>
 
-        <button type="submit">Salvar</button>
-        <button type="reset">Cancelar</button>
+        <button type="submit" style="background-color:#39FF1F;">Salvar</button>
+        <button type="reset"  style="background-color:#FF311F;">Cancelar</button>
      </form>
      
      <a href="principal.php"><img src="img/voltar.png"></a>

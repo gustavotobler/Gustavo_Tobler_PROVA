@@ -66,8 +66,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <option value="4">Cliente</option>
         </select>
 
-        <button type="submit">Salvar</button>
-        <button type="reset">Cancelar</button>
+        <button type="submit"  style="background-color:#39FF1F;">Salvar</button>
+        <button type="reset"  style="background-color:#FF311F;">Cancelar</button>
      </form>
      
      <a href="principal.php"><img src="img/voltar.png"></a>

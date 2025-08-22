@@ -94,7 +94,7 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
                 <td><?=htmlspecialchars($funcionario['telefone'])?></td>
                 <td><?=htmlspecialchars($funcionario['email'])?></td>
                 <td>
-                    <a href="excluir_funcionario.php?id=<?=htmlspecialchars($funcionario['id_funcionario'])?>"onclick="return confirm('Tem certeza que deseja excluir este funcionário?')"><button>Excluir</button></a>
+                    <a href="excluir_funcionario.php?id=<?=htmlspecialchars($funcionario['id_funcionario'])?>"onclick="return confirm('Tem certeza que deseja excluir este funcionário?')"><button  style="background-color:#FF311F;">Excluir</button></a>
                 </td>
             </tr>
         <?php endforeach;?>
